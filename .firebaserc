@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "bin-generator-f09a0": {
+      "hosting": {
+        "bin-gen-webapp": [
+          "bin-generator-f09a0"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "bin-generator-f09a0"
+  }
+}
