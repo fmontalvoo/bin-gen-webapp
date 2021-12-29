@@ -24,6 +24,15 @@ export class CardGeneratorService {
   }
 
 
+  public generateRandomCards(number: string, valid: string, cvv: string, limit: number, range: number): Array<string> {
+    const cards = [];
+    for (let i = 0; i < range; i++) {
+      const card = this.generateRandomCard(number, valid, cvv, limit);
+      cards.push(card);
+    }
+    return cards;
+  }
+
   public generateRandomCard(number: string, valid: string, cvv: string, limit: number): string {
     const total = limit - number.length;
     let digits = ''
