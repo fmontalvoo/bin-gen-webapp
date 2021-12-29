@@ -1,1 +1,20 @@
-<p>admin works!</p>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Número</th>
+                <th>Fecha</th>
+                <th>CVV</th>
+                <th>Tipo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let tarjeta of cards">
+                <td>{{ tarjeta.number }}</td>
+                <td>{{ tarjeta.valid }}</td>
+                <td>{{ tarjeta.cvv }}</td>
+                <td>{{ tarjeta.type }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

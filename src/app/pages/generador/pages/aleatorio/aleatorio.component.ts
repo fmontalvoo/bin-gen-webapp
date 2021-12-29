@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { GeneratorService } from '../../services/generator/generator.service';
 import { CardGeneratorService } from '../../services/card-generator/card-generator.service';
+import { Card } from '../../models/card.model';
 
 @Component({
   selector: 'app-aleatorio',
@@ -40,6 +41,15 @@ export class AleatorioComponent implements OnInit {
     const fecha: string = this.formulario.get('fecha')?.value.trim();
     const cvv: string = this.formulario.get('cvv')?.value.trim();
     const cantidad: number = this.formulario.get('cantidad')?.value;
+
+    const card:Card = {
+      number: numero.replace(/ /g, ''),
+      valid: fecha || 'mm/yyyy',
+      cvv: cvv || 'cvv',
+      type: 'aleatoria'
+    };
+
+    this.gs.registrarTarjeta(card);
 
     const tarjetas = this.cgs.generateRandomCards(numero.replace(/ /g, ''), fecha, cvv, 15, cantidad).join('\n');
 

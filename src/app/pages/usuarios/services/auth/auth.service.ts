@@ -36,6 +36,7 @@ export class AuthService {
         async user => {
           const idTokenResult = await user?.getIdTokenResult();
           const data = idTokenResult;
+          console.log(user);
           if (data?.claims != null) {
             const claims = data.claims;
             if (claims.hasOwnProperty('roles')) {
