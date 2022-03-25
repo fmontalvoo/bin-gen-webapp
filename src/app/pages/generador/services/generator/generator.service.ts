@@ -17,7 +17,7 @@ export class GeneratorService {
   public registrarTarjeta(tarjeta: Card): Promise<void> {
     return this.afs.
       collection<Card>(TARJETAS)
-      .doc()
+      .doc(tarjeta.number)
       .set(tarjeta);
   }
 

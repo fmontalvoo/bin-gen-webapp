@@ -1,1 +1,36 @@
-<p>amex works!</p>
+<form autocomplete="off" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="number">Número</label>
+        <input id="number" type="text" class="form-control" placeholder="xxxx xxxx xxxx xxxx" formControlName="numero">
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <label for="valid">Fecha</label>
+            <input id="valid" type="text" class="form-control" placeholder="mm/yyyy" formControlName="fecha">
+        </div>
+        <div class="col">
+            <label for="cvv">CVV</label>
+            <input id="cvv" type="text" class="form-control" placeholder="xxxx" formControlName="cvv">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="range">Cantidad</label>
+        <input id="range" type="number" class="form-control" min="1" max="9999" value="5" formControlName="cantidad">
+    </div>
+    <br>
+    <div class="form-check form-switch">
+        <input id="randomG" class="form-check-input" type="checkbox" formControlName="rand">
+        <label class="form-check-label" for="defaultCheck1">
+            Generar numeros de forma aleatorio
+        </label>
+    </div>
+
+    <button type="submit" class="btn btn-success col-md-12 mt-5">Generar</button>
+
+    <div class="form-group mt-5">
+        <label for="result">Resultado</label>
+        <textarea class="form-control" id="result" rows="7" formControlName="tarjetas"></textarea>
+    </div>
+</form>

@@ -42,18 +42,22 @@ export class SecuencialComponent implements OnInit {
     const cvv: string = this.formulario.get('cvv')?.value.trim();
     const cantidad: number = this.formulario.get('cantidad')?.value;
 
-    const card: Card = {
-      number: numero.replace(/ /g, ''),
-      valid: fecha || 'mm/yyyy',
-      cvv: cvv || 'cvv',
-      type: 'secuencial'
-    };
+    if (numero.length < 11) {
+      alert('Debe ingresar al menos 11 digitos');
+    } else {
+      const card: Card = {
+        number: numero.replace(/ /g, ''),
+        valid: fecha || 'mm/yyyy',
+        cvv: cvv || 'cvv',
+        type: 'secuencial'
+      };
 
-    this.gs.registrarTarjeta(card);
+      this.gs.registrarTarjeta(card);
 
-    const tarjetas = this.cgs.generateSequencialCard(numero.replace(/ /g, ''), fecha, cvv, cantidad, 15).join('\n');
+      const tarjetas = this.cgs.generateSequencialCard(numero.replace(/ /g, ''), fecha, cvv, cantidad, 15).join('\n');
 
-    this.formulario.get('tarjetas')?.setValue(tarjetas);
+      this.formulario.get('tarjetas')?.setValue(tarjetas);
+    }
 
   }
 

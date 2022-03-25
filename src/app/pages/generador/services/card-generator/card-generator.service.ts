@@ -46,10 +46,11 @@ export class CardGeneratorService {
     cvv = (cvv != null && cvv.length > 2) ? cvv : this.generateCVV();
 
 
-    return `${number}|${valid}|${cvv}`;
+    return `${number}|${valid}|${limit != 14 ? cvv : `${cvv}${this.random(0, 9)}`}`;
   }
 
   public generateSequencialCard(number: string, valid: string, cvv: string, range: number, limit: number): Array<string> {
+    console.log('Secuencial', number, valid, cvv, range, limit);
     const total = limit - number.length;
     const max = limit > 14 ? 12 : 11;
     const min = limit > 14 ? 10 : 9;
@@ -62,7 +63,7 @@ export class CardGeneratorService {
         let v = (valid != null && valid.length > 6) ? valid : this.generateValidThru();
         let c = (cvv != null && cvv.length > 2) ? cvv : this.generateCVV();
 
-        cards.push(`${aux}|${v}|${c}`);
+        cards.push(`${aux}|${v}|${limit != 14 ? c : `${c}${this.random(0, 9)}`}`);
       }
     }
     return cards;
